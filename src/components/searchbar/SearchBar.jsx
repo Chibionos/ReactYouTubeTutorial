@@ -11,6 +11,13 @@ export class SearchBar extends React.Component {
         this.state = { searchText: "" };
     }
 
+    onInputChange(searchText) {
+        this.setState({ searchText: searchText });
+
+        // we can access a call back on a property easily by directly call it.
+        this.props.onSearchTextChange(searchText);
+    }
+
     render() {
         // we can only manipulate the state by using this.setState
         return (                
@@ -20,7 +27,7 @@ export class SearchBar extends React.Component {
                     <FormControl
                         type="text"
                         value={this.state.searchText}
-                        onChange={e => this.setState({ searchText: e.target.value })}
+                        onChange={e => this.onInputChange(e.target.value)}
                         placeholder="Search" />
 
                     <InputGroup.Button>

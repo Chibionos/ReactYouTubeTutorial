@@ -9,6 +9,7 @@
         "react-scripts": "1.0.13",
         "react-video-players": "^0.1.7",
         "youtube-api-search": "^0.0.5",
+        "lodash": "^4.17.4"
     },
     "scripts": {
         "start": "react-scripts start",

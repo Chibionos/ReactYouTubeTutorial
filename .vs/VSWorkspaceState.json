@@ -7,9 +7,10 @@
     "\\src\\components",
     "\\src\\components\\app",
     "\\src\\components\\searchbar",
-    "\\src\\js",
-    "\\src\\tests"
+    "\\src\\components\\videodetails",
+    "\\src\\components\\videolist",
+    "\\src\\components\\videothumbnail"
   ],
-  "SelectedNode": "\\src\\components\\app\\App.jsx",
+  "SelectedNode": "\\src\\components\\videothumbnail\\VideoThumbnail.jsx",
   "PreviewInSolutionExplorer": false
 }

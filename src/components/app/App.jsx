@@ -9,6 +9,7 @@ import { VideoDetails } from '../videodetails/VideoDetails';
 import { Constants } from '../../js/Constants';
 
 import './App.css';
+import * as _ from "lodash";
 
 class App extends React.Component {
 
@@ -19,9 +20,12 @@ class App extends React.Component {
             selectedVideo: null
         };
         
-        // updating the base videos state with the data from cat videos
-        YouTubeAPI({ key: Constants.API_KEY, term: 'cats' }, (videos) => {
+        this.videoSearch("cats");
+    }
 
+    // call back for video search
+    videoSearch(searchText) {
+        YouTubeAPI({ key: Constants.API_KEY, term: searchText }, (videos) => {
             let selectedVideo = null;
 
             if (videos.length > 0) {
@@ -36,6 +40,10 @@ class App extends React.Component {
     }
 
     render() {
+
+        // throttling a function that can only be called once every 300 milliseconds
+        const videoSearch = _.debounce((searchText) => { this.videoSearch(searchText)}, 300);
+
         return (
             <div>
                 <Navbar>
@@ -46,7 +54,7 @@ class App extends React.Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Navbar.Form>
-                            <SearchBar/>
+                            <SearchBar onSearchTextChange={ videoSearch }/>
                         </Navbar.Form>
                     </Navbar.Collapse>
                 </Navbar>
